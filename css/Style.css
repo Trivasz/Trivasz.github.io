@@ -1,0 +1,114 @@
+body {
+    background-color: #222222;
+}
+.text{
+    color: white;
+    font-size: 15px;
+    font: caption;
+    user-select: none;
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+.tooltip .tooltiptext {
+    visibility: collapse;
+    width: 150px;
+    background-color: #2d2d2d;
+    color: white;
+    border: 2px dotted rgba(255, 255, 255, 0.500);
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 8px;
+    position: absolute;
+    top: 120%;
+    left: 0%;
+}
+.tooltip:hover .tooltiptext{
+    visibility: visible;
+}
+.button {
+    background-color: #2d2d2d;
+    border: 2px solid rgba(255, 255, 255, 0.500);
+    border-radius: 8px;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    user-select: none;
+    width: 150px;        
+}
+.button:hover {
+    background-color: #1e2220;
+}
+.button:active {
+    background-color: #2d2d2d;
+}
+.button:disabled{
+    opacity: 50%;
+}
+.game_title{
+    position: absolute;
+    top: 15px;
+    left: 35px;
+    color: white;
+    font-size: 20px;
+    font: caption;
+    user-select: none;
+}
+.resource_area{
+    height: 170px;
+    width: 400px;
+    position: absolute;
+    top: 50px;
+    left: 30px; 
+    border: 2px solid rgba(255, 255, 255, 0.500);
+    border-radius: 8px;
+}
+.resources_text{
+    position: absolute;
+    top: 60px;
+    left: 40px;
+}
+.divider{
+    position: absolute;
+    height: 0px;
+    width: 400px;
+    top: 85px;
+    left: 30px;
+    border: 1px dashed rgba(255, 255, 255, 0.500);
+}
+.atoms_amount{
+    position: absolute;
+    top: 90px;
+    left: 40px;
+    font-size: 15px;
+}
+.atoms_button{
+    position: absolute;
+    top: 50px;
+    left: 500px;
+}
+.molecule_amount{
+    position: absolute;
+    top: 90px;
+    left: 120px;
+    font-size: 15px;
+}
+.molecule_button{
+    position: absolute;
+    top: 50px;
+    left: 700px;
+}
+.atom_generator{
+    position: absolute;
+    top: 120px;
+    left: 500px;
+}
+.atom_generator_amount{
+    position: absolute;
+    top: 120px;
+    left: 40px;
+}
