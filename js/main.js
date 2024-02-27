@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let molecule_amount = 0;
     let atom_gen_amount = 0
     let molecule_cost = 10;
-    let atom_gen_cost = 20;
+    let atom_gen_cost = 15;
     const molecule_btn = document.getElementById('molecule_btn');
     const atom_gen_btn = document.getElementById('atom_gen_btn');
 
