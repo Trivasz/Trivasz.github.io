@@ -1,20 +1,29 @@
-<!DOCTYPE html>
 <html>
-    <head>
-        <title>From Scratch</title>
-        <link rel="stylesheet" href="css/Style.css">
-        <script src="js/main.js"></script>
-    </head>
-    <body>
-        <h1 class="game_title">From Scratch</h1>
-        <div class="resource_area"></div>
-        <div class="text resources_text">Resources:</div>
-        <div class="divider"></div>
-        <div id="atoms_txt" class="text atoms_amount">Atoms: 0</div>
-        <button type="button" id="atoms_btn" class="button atoms_button">Create Atoms</button>
-        <div id="molecule_txt" class="text molecule_amount">molecule: 0</div>
-        <button type="button" id="molecule_btn" class="tooltip button molecule_button">Create molecule<span id="molecule_btn_tt" class="tooltiptext">Cost: 10 Atoms</span></button>
-        <div id="atom_gen_txt" class="text atom_generator_amount">Atom Generators: 0</div>
-        <button type="button" id="atom_gen_btn" class="tooltip button atom_generator">Build Atom Generator<span id="atom_gen_btn_tt" class="tooltiptext">Cost: 15 Atoms</span></button>
-    </body>
+<head>
+    <title>From Scratch</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="js/index.js"></script>
+</head>
+<body>
+    <div class="content">
+        <p class="title">From Scratch</p>
+        <div class="resources">
+            <p id="atoms" class="atoms">Atoms: 0</p>
+            <p id="molecules" class="molecules">Molecules: 0</p>
+            <p id="atom-gens" class="atom-gens">Atom Generators: 0</p>
+        </div>
+        <div class="actions">
+            <button id="create-atoms" class="create-atoms">Create Atoms</button>
+            <button id="create-molecules" class="create-molecules tooltip">Create Molecules
+                <span id="molecules-tt" class="tooltiptext">Cost: 10 Atoms</span></button>
+            <button id="create-atom-gen" class="create-atom-gen tooltip">Build Atom Generators
+                <span id="atom-gens-tt" class="tooltiptext">Cost: 15 Atoms</span></button>
+        </div>
+        <div class="menus">
+            <button id="achievements" class="achievements">Achievements</button>
+            <button id="options" class="options">Options</button>
+        </div>
+    </div>
+</body>
 </html>

@@ -1,114 +1,87 @@
 body {
-    background-color: #222222;
-}
-.text{
+    background-color: #2d2d2d;
     color: white;
-    font-size: 15px;
-    font: caption;
     user-select: none;
 }
-.tooltip {
-    position: relative;
-    display: inline-block;
-}
-.tooltip .tooltiptext {
-    visibility: collapse;
-    width: 150px;
-    background-color: #2d2d2d;
-    color: white;
-    border: 2px dotted rgba(255, 255, 255, 0.500);
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 8px;
-    position: absolute;
-    top: 120%;
-    left: 0%;
-}
-.tooltip:hover .tooltiptext{
-    visibility: visible;
-}
-.button {
-    background-color: #2d2d2d;
-    border: 2px solid rgba(255, 255, 255, 0.500);
+
+button {
+    background-color: #444444;
+    border: 2px solid #ffffff80;
     border-radius: 8px;
     color: white;
-    padding: 15px;
-    text-align: center;
-    font-size: 15px;
-    cursor: pointer;
-    transition-duration: 0.4s;
-    user-select: none;
-    width: 150px;        
+    padding: 10px;
+    width: 200px;
+    margin-right: 20px;
 }
-.button:hover {
-    background-color: #1e2220;
+
+button:hover {
+    background-color: #252525;
 }
-.button:active {
-    background-color: #2d2d2d;
+
+button:active {
+    background-color: #444444;
 }
-.button:disabled{
+
+button:disabled {
     opacity: 50%;
 }
-.game_title{
-    position: absolute;
-    top: 15px;
-    left: 35px;
-    color: white;
-    font-size: 20px;
-    font: caption;
-    user-select: none;
+
+.tooltip {
+    position: relative;
 }
-.resource_area{
-    height: 170px;
-    width: 400px;
-    position: absolute;
-    top: 50px;
-    left: 30px; 
-    border: 2px solid rgba(255, 255, 255, 0.500);
+
+.tooltip .tooltiptext {
+    visibility: collapse;
+    width: 120px;
+    background-color: #252525;
+    color: #fff;
+    text-align: center;
+    border: 2px solid #ffffff80;
     border-radius: 8px;
-}
-.resources_text{
+    padding: 5px 0;
+
     position: absolute;
-    top: 60px;
-    left: 40px;
+    z-index: 1;
+    top: 130%;
+    left: 50%;
+    margin-left: -60px;
 }
-.divider{
-    position: absolute;
-    height: 0px;
-    width: 400px;
-    top: 85px;
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.title {
+    position: fixed;
+    font-size: large;
+    top: 0;
     left: 30px;
-    border: 1px dashed rgba(255, 255, 255, 0.500);
 }
-.atoms_amount{
-    position: absolute;
-    top: 90px;
-    left: 40px;
-    font-size: 15px;
+
+.menus {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
 }
-.atoms_button{
-    position: absolute;
-    top: 50px;
-    left: 500px;
+
+.resources {
+    position: fixed;
+    height: 200px;
+    width: 600px;
+    border: 2px solid #ffffff80;
+    border-radius: 8px;
+    top: 60px;
+    left: 20px;
 }
-.molecule_amount{
-    position: absolute;
-    top: 90px;
-    left: 120px;
-    font-size: 15px;
+
+.actions {
+    position: fixed;
+    column-gap: 20px;
+    top: 60px;
+    left: 650px;
 }
-.molecule_button{
-    position: absolute;
-    top: 50px;
-    left: 700px;
-}
-.atom_generator{
-    position: absolute;
-    top: 120px;
-    left: 500px;
-}
-.atom_generator_amount{
-    position: absolute;
-    top: 120px;
-    left: 40px;
+
+.atoms, .molecules, .atom-gens {
+    position: relative;
+    left: 15px;
 }
