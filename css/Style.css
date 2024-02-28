@@ -12,6 +12,7 @@ button {
     padding: 10px;
     width: 200px;
     margin-right: 20px;
+    margin-bottom: 50px;
 }
 
 button:hover {
@@ -24,6 +25,7 @@ button:active {
 
 button:disabled {
     opacity: 50%;
+    color: red;
 }
 
 .tooltip {
@@ -34,7 +36,7 @@ button:disabled {
     visibility: collapse;
     width: 120px;
     background-color: #252525;
-    color: #fff;
+    color: white;
     text-align: center;
     border: 2px solid #ffffff80;
     border-radius: 8px;
@@ -58,7 +60,7 @@ button:disabled {
     left: 30px;
 }
 
-.menus {
+.menu {
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -66,8 +68,8 @@ button:disabled {
 
 .resources {
     position: fixed;
-    height: 200px;
-    width: 600px;
+    height: 600px;
+    width: 300px;
     border: 2px solid #ffffff80;
     border-radius: 8px;
     top: 60px;
@@ -78,10 +80,10 @@ button:disabled {
     position: fixed;
     column-gap: 20px;
     top: 60px;
-    left: 650px;
+    left: 350px;
 }
 
-.atoms, .molecules, .atom-gens {
+.atoms, .molecules, .cells, .atom_gens, .molecule_gens, .dna, .rna {
     position: relative;
     left: 15px;
 }

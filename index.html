@@ -2,28 +2,63 @@
 <head>
     <title>From Scratch</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="js/index.js"></script>
 </head>
 <body>
-    <div class="content">
+    <div id="app">
         <p class="title">From Scratch</p>
         <div class="resources">
-            <p id="atoms" class="atoms">Atoms: 0</p>
-            <p id="molecules" class="molecules">Molecules: 0</p>
-            <p id="atom-gens" class="atom-gens">Atom Generators: 0</p>
+            <p class="atoms">
+                Atoms: {{user.resources[0].amount}} / {{user.resources[0].max}}
+            </p>
+            <p class="molecules">
+                Molecules: {{user.resources[1].amount}} / {{user.resources[1].max}}
+            </p>
+            <p class="cells">
+                Cells: {{user.resources[2].amount}} / {{user.resources[2].max}}
+            </p>
+            <p class="dna">
+                DNA: {{user.resources[3].amount}} / {{user.resources[3].max}}
+            </p>
+            <p class="rna">
+                RNA: {{user.resources[4].amount}} / {{user.resources[4].max}}
+            </p>
+            <p class="atom_gens">
+                Atom Generators: {{user.generators[0].amount}}
+            </p>
+            <p class="molecule_gens">
+                Molecule Generators: {{user.generators[1].amount}}
+            </p>
         </div>
         <div class="actions">
-            <button id="create-atoms" class="create-atoms">Create Atoms</button>
-            <button id="create-molecules" class="create-molecules tooltip">Create Molecules
-                <span id="molecules-tt" class="tooltiptext">Cost: 10 Atoms</span></button>
-            <button id="create-atom-gen" class="create-atom-gen tooltip">Build Atom Generators
-                <span id="atom-gens-tt" class="tooltiptext">Cost: 15 Atoms</span></button>
+            <button id="atom_btn" @click="createAtoms">Create Atoms</button>
+            <button id="molecule_btn" class="tooltip" @click="createMolecules">Create Molecules
+                <span class="tooltiptext">Cost: {{user.resources[1].cost}} Atoms</span>
+            </button>
+            <button id="cell_btn" class="tooltip" @click="createCells">Create Cells
+                <span class="tooltiptext">Cost: {{user.resources[2].cost}} Atoms</span>
+            </button>
+            <button id="dna_btn" class="tooltip" @click="createDna">Create DNA
+                <span class="tooltiptext">Cost: {{user.resources[3].cost}} Cells</span>
+            </button>
+            <button id="rna_btn" class="tooltip" @click="createRna">Create RNA
+                <span class="tooltiptext">Cost: {{user.resources[4].cost}} DNA</span>
+            </button>
+            <button id="atom_gen_btn" class="tooltip" @click="createAtomGen">Build Atom Generator
+                <span class="tooltiptext">Cost {{user.generators[0].cost}} Molecules</span>
+            </button>
+            <button id="molecule_gen_btn" class="tooltip" @click="createMoleculeGen">Build Molecule Generator
+                <span class="tooltiptext">Cost {{user.generators[1].cost}} Cells</span>
+            </button>
         </div>
-        <div class="menus">
-            <button id="achievements" class="achievements">Achievements</button>
-            <button id="options" class="options">Options</button>
+        <div class="menu">
+            <button class="save" @click="save">Save</button>
+            <button class="load" @click="load">Load</button>
         </div>
     </div>
+
+    <!---Scripts-->
+    <script src="js/vue.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>

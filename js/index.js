@@ -1,66 +1,202 @@
-$(document).ready(function(){
-    var atoms = 0
-    var molecules = 0
-    var atom_gens = 0
-    var molecules_price = 10
-    var atom_gens_price = 15
-
-    setInterval(check, 10)
-    setInterval(tick, 1000)
-
-    $("#create-atoms").click(function(){
-        atoms += 1
-        updateinventory()
-    })
-
-    $("#create-molecules").click(function(){
-        let modify = 1.2
-        atoms = atoms - molecules_price
-        molecules += 1
-        molecules_price = (molecules_price + 2) * modify
-        molecules_price = Math.floor(molecules_price)
-        updateinventory()
-        updatetooltip()
-    })
-
-    $("#create-atom-gen").click(function(){
-        let modify = 1.6
-        atoms = atoms - atom_gens_price
-        atom_gens += 1
-        atom_gens_price = (atom_gens_price + 2) * modify
-        atom_gens_price = Math.floor(atom_gens_price)
-        updateinventory()
-        updatetooltip()
-    })
-
-    function check(){
-        if (atoms < molecules_price) {
-            $("#create-molecules").prop("disabled", true)
-        } else {
-            $("#create-molecules").prop("disabled", false)
+const app = Vue.createApp({
+    data () {
+        return {
+            user: user
         }
-        if (atoms < atom_gens_price) {
-            $("#create-atom-gen").prop("disabled", true)
-        } else {
-            $("#create-atom-gen").prop("disabled", false)
+    },
+    created () {
+    },
+    methods: { 
+        createAtoms() {
+            const atoms = this.user.resources[0]
+
+            if (atoms.amount == atoms.max) {
+                return
+            }
+
+            atoms.amount++
+        },
+        createMolecules() {
+            const atoms = this.user.resources[0]
+            const molecules = this.user.resources[1]
+
+            if (molecules.amount == molecules.max) {
+                return
+            }
+
+            atoms.amount -= molecules.cost
+            atoms.max += 5
+            molecules.amount++
+            molecules.cost *= molecules.modify
+            molecules.cost = Math.floor(molecules.cost)
+        },
+        createCells() {
+            const atoms = this.user.resources[0]
+            const cells = this.user.resources[2]
+
+            if (cells.amount == cells.max) {
+                return
+            }
+
+            atoms.amount -= cells.cost
+            molecules.max += 10
+            cells.amount++
+            cells.cost *= cells.modify
+            cells.cost = Math.floor(cells.cost)
+        },
+        createDna() {
+             const cells = this.user.resources[2]
+             const dna = this.user.resources[3]
+
+            if (dna.amount == dna.max) {
+                return
+            }
+
+            cells.amount -= dna.cost
+            cells.max += 5
+            dna.amount++
+            dna.cost *= dna.modify
+            dna.cost = Math.floor(dna.cost)
+        },
+        createDna() {
+            const dna = this.user.resources[3]
+            const rna = this.user.resources[4]
+
+           if (rna.amount == rna.max) {
+               return
+           }
+
+           dna.amount -= rna.cost
+           dna.max += 5
+           rna.amount++
+           rna.cost *= rna.modify
+           rna.cost = Math.floor(rna.cost)
+       },
+        createAtomGen() {
+            const atoms = this.user.resources[0]
+            const atom_gens = this.user.generators[0]
+
+            atoms.amount -= atom_gens.cost
+            atom_gens.amount++
+            atom_gens.cost *= atom_gens.modify
+            atom_gens.cost = Math.floor(atom_gens.cost)
+            atom_gens.active = true;
+            if (atom_gens.amount == 1) {
+                this.numbersGoingUp()
+            }
+        },
+        createMoleculeGen() {
+            const cells = this.user.resources[2]
+            const Molecule_gens = this.user.generators[1]
+
+            cells.amount -= Molecule_gens.cost
+            Molecule_gens.amount++
+            Molecule_gens.cost *= Molecule_gens.modify
+            Molecule_gens.cost = Math.floor(Molecule_gens.cost)
+            Molecule_gens.active = true;
+            if (Molecule_gens.amount == 1) {
+                this.numbersGoingUp()
+            }
+        },
+        numbersGoingUp() {
+            const atoms = this.user.resources[0]
+            const molecules = this.user.resources[1]
+            const atom_gens = this.user.generators[0]
+            const molecule_gens = this.user.generators[1]
+
+            if (atom_gens.active) {
+                setInterval(() => {
+                    if (atoms.amount == atoms.max) {
+                        return
+                    } else {
+                        atoms.amount += atom_gens.amount
+                    }
+                }, 1000);
+            }   
+
+            if (molecule_gens.active) {
+                setInterval(() => {
+                    if (molecules.amount == molecules.max) {
+                        return
+                    } else {
+                        molecules.amount += molecules.amount
+                    }
+                }, 1000);
+            }   
+        },
+        save() {
+            localStorage.setItem('resources', JSON.stringify(this.user.resources))
+            localStorage.setItem('generators', JSON.stringify(this.user.generators));
+        },
+        load() {
+            const resourcesData = localStorage.getItem('resources')
+            const generatorsData = localStorage.getItem('generators');
+
+            if (resourcesData) {
+                const parsedResources = JSON.parse(resourcesData);
+                parsedResources.forEach((resource, index) => {
+                    this.user.resources[index] = resource;
+                });
+            }
+
+            if (generatorsData) {
+                const parsedResources = JSON.parse(generatorsData);
+                parsedResources.forEach((generator, index) => {
+                    this.user.generators[index] = generator;
+                });
+            }
+
+            this.numbersGoingUp()
+            
         }
-    }
-
-    function tick() {
-        if (atom_gens >= 1) {
-            atoms = atoms + atom_gens
-            updateinventory()
-        }
-    }
-
-    function updateinventory(){
-        $("#atoms").html("Atoms: " + atoms)
-        $("#molecules").html("Molecules: " + molecules)
-        $("#atom-gens").html("Atom Generators: " + atom_gens)
-    }
-
-    function updatetooltip(){
-        $("#molecules-tt").html("Cost: " + molecules_price + " Atoms")
-        $("#atom-gens-tt").html("Cost: " + atom_gens_price + " Atoms")
     }
 })
+
+app.mount("#app")
+
+setInterval(buttonCheck, 10)
+
+function buttonCheck() {
+
+    if (user.resources[0].amount < user.resources[1].cost) {
+        document.getElementById("molecule_btn").disabled = true;
+    } 
+    else {
+        document.getElementById("molecule_btn").disabled = false;
+    }
+
+    if (user.resources[0].amount < user.resources[2].cost) {
+        document.getElementById("cell_btn").disabled = true;
+    } 
+    else {
+        document.getElementById("cell_btn").disabled = false;
+    }
+
+    if (user.resources[2].amount < user.resources[3].cost) {
+        document.getElementById("dna_btn").disabled = true;
+    } 
+    else {
+        document.getElementById("dna_btn").disabled = false;
+    }
+
+    if (user.resources[3].amount < user.resources[4].cost) {
+        document.getElementById("rna_btn").disabled = true;
+    } 
+    else {
+        document.getElementById("rna_btn").disabled = false;
+    }
+
+    if (user.resources[0].amount < user.generators[0].cost) {
+        document.getElementById("atom_gen_btn").disabled = true;
+    } 
+    else {
+        document.getElementById("atom_gen_btn").disabled = false;
+    }
+
+    if (user.resources[2].amount < user.generators[1].cost) {
+        document.getElementById("molecule_gen_btn").disabled = true;
+    } 
+    else {
+        document.getElementById("molecule_gen_btn").disabled = false;
+    }
+}
