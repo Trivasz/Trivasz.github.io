@@ -1,89 +1,170 @@
 body {
-    background-color: #2d2d2d;
+    background-color: #0C0D10;
+    background-image: linear-gradient(90deg, #0C0D10 0%, #0C0D10 20%, #101115 35%, #181920 55%, #252732 100%);
     color: white;
+    margin: 0;
+    padding: 0;
     user-select: none;
 }
 
-button {
-    background-color: #444444;
-    border: 2px solid #ffffff80;
-    border-radius: 8px;
-    color: white;
-    padding: 10px;
-    width: 200px;
-    margin-right: 20px;
-    margin-bottom: 50px;
-}
-
 button:hover {
-    background-color: #252525;
+    opacity: 70%;
 }
 
 button:active {
-    background-color: #444444;
+    opacity: 100%;
 }
 
-button:disabled {
-    opacity: 50%;
-    color: red;
+p {
+    width: fit-content;
 }
 
-.tooltip {
-    position: relative;
+.tutorial-area {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 30%;
+    width: 100vw;
 }
 
-.tooltip .tooltiptext {
-    visibility: collapse;
-    width: 120px;
-    background-color: #252525;
-    color: white;
-    text-align: center;
+.tutorial-txt {
+    display: inline;
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.atom-amount-tut {
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.atom-btn-tut {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    padding: 10px;
     border: 2px solid #ffffff80;
     border-radius: 8px;
-    padding: 5px 0;
-
-    position: absolute;
-    z-index: 1;
-    top: 130%;
-    left: 50%;
-    margin-left: -60px;
+    background-color: #333333;
+    background-image: linear-gradient(90deg, #16171c 35%, #181920 55%, #252732 100%);
+    color: white;
+    box-shadow: 0 9px #ffffff80;
+    cursor: pointer;
 }
 
-.tooltip:hover .tooltiptext {
-    visibility: visible;
+.atom-btn-tut:active {
+    background-color: #252525;
+    box-shadow: 0 4.5px grey;
+    translate: 0px 4.5px;
+}
+
+.sidebar {
+    display: none;
+    height: 100vh;
+    width: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #0C0D10;
+    border: 2px solid #ffffff80;
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
 }
 
 .title {
-    position: fixed;
+    position: relative;
+    top: 0px;
+    left: 10px;
     font-size: large;
-    top: 0;
-    left: 30px;
 }
 
 .menu {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+}
+
+.menu button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ffffff80;
+    border-left: none;
+    border-right: none;
+    margin: 15px 0px 15px 0px;
+    background-color: #333333;
+    background-image: linear-gradient(90deg, #16171c 35%, #181920 55%, #252732 100%);
+    color: white;
+}
+
+.menu button:hover {
+    opacity: 70%;
+}
+
+.menu button:active {
+    opacity: 100%;
 }
 
 .resources {
-    position: fixed;
-    height: 600px;
-    width: 300px;
+    position: relative;
+    width: 100%;
+    height: 30%;
+    top: 10px;
+}
+
+.resources p {
+    position: relative;
+    left: 10px;
+}
+
+.play-area {
+    display: none;
+    position: relative;
+    left: 200px;
+    height: 100vh;
+    width: 50%;
+    border-right: 2px solid #ffffff80;
+}
+
+.atom-creation {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.atom-creation button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    padding: 10px;
     border: 2px solid #ffffff80;
     border-radius: 8px;
-    top: 60px;
-    left: 20px;
+    background-color: #333333;
+    background-image: linear-gradient(90deg, #16171c 35%, #181920 55%, #252732 100%);
+    color: white;
+    box-shadow: 0 9px #ffffff80;
+    cursor: pointer;
 }
 
-.actions {
-    position: fixed;
-    column-gap: 20px;
-    top: 60px;
-    left: 350px;
+.atom-creation button:active {
+    box-shadow: 0 4.5px #ffffff80;
+    translate: 0px 4.5px;
 }
 
-.atoms, .molecules, .cells, .atom_gens, .molecule_gens, .dna, .rna {
-    position: relative;
-    left: 15px;
+.atom-creation p {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
